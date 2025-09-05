@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15       # versão do PostgreSQL
+    container_name: pg-docker
+    restart: always
+    environment:
+      POSTGRES_USER: admin      # usuário
+      POSTGRES_PASSWORD: admin   # senha
+      POSTGRES_DB: marcenaria   # banco inicial
+    ports:
+      - "5432:5432"              # expõe porta para o host
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

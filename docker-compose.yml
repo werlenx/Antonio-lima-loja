@@ -1,0 +1,71 @@
+version: '3.8'
+
+services:
+  # Banco de dados PostgreSQL
+  postgres:
+    image: postgres:15
+    container_name: antonio-lima-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: marcenaria
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
+      - ./database/seeds/inserts.sql:/docker-entrypoint-initdb.d/02-seeds.sql
+    networks:
+      - antonio-lima-network
+
+  # Backend API
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: antonio-lima-backend
+    restart: always
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: marcenaria
+      DB_USER: admin
+      DB_PASSWORD: admin
+      PORT: 3001
+      NODE_ENV: production
+      JWT_SECRET: antonio-lima-marcenaria-secret-key-2024
+      FRONTEND_URL: http://localhost:3000
+    ports:
+      - "3001:3001"
+    depends_on:
+      - postgres
+    networks:
+      - antonio-lima-network
+    volumes:
+      - ./backend/uploads:/app/uploads
+
+  # Frontend Next.js
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: antonio-lima-frontend
+    restart: always
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:3001/api
+      NEXTAUTH_URL: http://localhost:3000
+      NEXTAUTH_SECRET: antonio-lima-marcenaria-secret-key-2024
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - antonio-lima-network
+
+volumes:
+  postgres_data:
+
+networks:
+  antonio-lima-network:
+    driver: bridge

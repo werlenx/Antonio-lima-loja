@@ -1,251 +1,206 @@
-# Antonio Lima Marcenaria - E-commerce de Portas Artesanais
+# 🪵 Antonio Lima Marcenaria - E-commerce
 
-## Descrição
-Sistema de e-commerce especializado em portas artesanais de madeira maciça, com foco na experiência do usuário e funcionalidades completas de compra.
+E-commerce completo para marcenaria artesanal com portas de madeira maciça personalizadas.
 
-## Funcionalidades Implementadas
+## 🏗️ Arquitetura do Projeto
 
-### 🏠 Página Inicial
-- Listagem de produtos em cards responsivos
-- Navegação intuitiva
-- Design moderno e limpo
+```
+AntonioLimaMarcenaria/
+├── frontend/                 # Next.js 15 (React)
+├── backend/                  # Node.js + Express + PostgreSQL
+├── database/                 # Scripts SQL e configurações
+├── docker-compose.yml        # Orquestração de todos os serviços
+└── README.md
+```
 
-### 🚪 Página de Produto Detalhada
-- **Galeria interativa** com múltiplas imagens em alta qualidade
-- **Miniaturas clicáveis** para navegação entre fotos
-- **Placeholder para vídeo** do produto (mostrando material e movimento)
-- **Variações de acabamento** (Natural, Encerado, Vernizado) com preços diferentes
-- **Atualização dinâmica** da imagem principal ao selecionar variações
-- **Seleção de medidas** padrão e personalizadas
-- **Controles de quantidade** integrados
-- **Botão "Adicionar ao Carrinho"** com validação
+## 🚀 Tecnologias Utilizadas
 
-### 🛒 Sistema de Carrinho Completo
-- **Contexto global** com React Context para gerenciar o estado
-- **Persistência** no localStorage para manter itens entre sessões
-- **Adição/remoção** de produtos com variações e medidas personalizadas
-- **Controles de quantidade** com validação
-- **Cálculo automático** de subtotais, frete e total
-- **Interface responsiva** com animações suaves
-- **Badge de contagem** no menu principal
-- **Integração completa** com a página de produto
-
-### 🔐 Sistema de Autenticação Completo
-- **NextAuth.js** integrado com autenticação por credenciais
-- **Páginas de login e registro** com validação completa
-- **Recuperação de senha** funcional
-- **Sessões persistentes** com JWT
-- **Proteção de rotas** para usuários autenticados
-- **Menu dinâmico** com opções de usuário logado
-- **Dropdown de usuário** com navegação para perfil e configurações
-
-### 👤 Perfil do Usuário
-- **Página de perfil completa** com navegação por abas
-- **Informações pessoais** editáveis
-- **Histórico de pedidos** (estrutura preparada)
-- **Gestão de endereços** (estrutura preparada)
-- **Sistema de favoritos** (estrutura preparada)
-- **Configurações de notificações** com toggles
-- **Interface responsiva** e intuitiva
-
-### 📱 Interface e UX
-- **Design responsivo** para todos os dispositivos
-- **Interface moderna** com animações e transições
-- **CSS modular** para melhor organização
-- **TypeScript** para tipagem estática
-- **Componentes React** otimizados
-- **Layout grid** responsivo e flexível
-
-## Tecnologias Utilizadas
-
-- **Next.js 14** com App Router
-- **TypeScript** para tipagem estática
+### Frontend
+- **Next.js 15** com App Router
+- **React 19** com TypeScript
 - **NextAuth.js** para autenticação
-- **bcryptjs** para hash de senhas
 - **CSS Modules** para estilização
-- **React Hooks** para gerenciamento de estado
-- **Design responsivo** para todos os dispositivos
+- **Axios** para requisições HTTP
 
-## Estrutura do Projeto
+### Backend
+- **Node.js** com Express
+- **PostgreSQL** como banco de dados
+- **JWT** para autenticação
+- **bcryptjs** para hash de senhas
+- **Express Validator** para validação
 
+### Infraestrutura
+- **Docker** e **Docker Compose**
+- **PostgreSQL 15** em container
+- **Nginx** (opcional para produção)
+
+## 📋 Funcionalidades
+
+### 🛍️ E-commerce
+- ✅ Catálogo de produtos com imagens
+- ✅ Página de produto detalhada
+- ✅ Carrinho de compras persistente
+- ✅ Sistema de variações (acabamentos)
+- ✅ Medidas personalizadas
+- ✅ Avaliações de clientes
+- ✅ FAQ dinâmico
+
+### 👤 Autenticação
+- ✅ Login e registro de usuários
+- ✅ Perfil do usuário
+- ✅ Recuperação de senha
+- ✅ Sessões seguras com JWT
+
+### 🎨 Interface
+- ✅ Design responsivo
+- ✅ Menu de navegação
+- ✅ Busca de produtos
+- ✅ Carrinho lateral
+- ✅ Formulários de contato
+
+## 🛠️ Como Executar
+
+### Pré-requisitos
+- Docker e Docker Compose instalados
+- Node.js 18+ (para desenvolvimento local)
+
+### 1. Clone o repositório
+```bash
+git clone <url-do-repositorio>
+cd AntonioLimaMarcenaria
 ```
-src/
-├── app/
-│   ├── globals.css
-│   ├── layout.tsx
-│   ├── page.tsx (Home)
-│   ├── auth/
-│   │   ├── login/page.tsx
-│   │   ├── register/page.tsx
-│   │   ├── forgot-password/page.tsx
-│   │   └── auth.module.css
-│   ├── perfil/
-│   │   ├── page.tsx
-│   │   └── perfil.module.css
-│   └── produto/
-│       ├── [id]/
-│       │   └── page.tsx (Página de Produto)
-│       └── product.module.css
-├── components/
-│   ├── CardProduct.tsx
-│   ├── cardProduct.module.css
-│   ├── Cart.tsx
-│   ├── cart.module.css
-│   ├── Footer.tsx
-│   ├── footer.module.css
-│   ├── Menu.tsx
-│   ├── menu.module.css
-│   └── SessionProvider.tsx
-├── contexts/
-│   └── CartContext.tsx
-└── api/
-    └── auth/
-        └── [...nextauth]/
-            └── route.ts
+
+### 2. Execute com Docker (Recomendado)
+```bash
+# Subir todos os serviços
+docker-compose up -d
+
+# Ver logs
+docker-compose logs -f
+
+# Parar serviços
+docker-compose down
 ```
 
-## Características Técnicas
+### 3. Desenvolvimento Local
+
+#### Backend
+```bash
+cd backend
+npm install
+npm run dev
+```
+
+#### Frontend
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+#### Banco de Dados
+```bash
+# Usar o PostgreSQL do Docker
+docker-compose up postgres -d
+
+# Ou executar migrações manualmente
+cd backend
+npm run migrate
+npm run seed
+```
+
+## 🌐 URLs de Acesso
+
+- **Frontend**: http://localhost:3000
+- **Backend API**: http://localhost:3001
+- **PostgreSQL**: localhost:5432
+
+## 📊 Estrutura do Banco de Dados
+
+### Tabelas Principais
+- `usuarios` - Dados dos usuários
+- `produtos` - Catálogo de produtos
+- `categorias` - Categorias de produtos
+- `imagens_produto` - Imagens dos produtos
+- `variacoes` - Variações (acabamentos, cores)
+- `avaliacoes` - Avaliações dos clientes
+- `pedidos` - Pedidos realizados
+- `itens_pedido` - Itens dos pedidos
+- `pagamentos` - Dados de pagamento
+
+## 🔧 Configuração
+
+### Variáveis de Ambiente
+
+#### Backend (.env)
+```env
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=marcenaria
+DB_USER=admin
+DB_PASSWORD=admin
+PORT=3001
+JWT_SECRET=sua-chave-secreta
+FRONTEND_URL=http://localhost:3000
+```
+
+#### Frontend (.env.local)
+```env
+NEXT_PUBLIC_API_URL=http://localhost:3001/api
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=sua-chave-secreta
+```
+
+## 📱 APIs Disponíveis
 
 ### Autenticação
-- **NextAuth.js** com provider de credenciais
-- **Hash seguro** de senhas com bcryptjs
-- **Sessões JWT** persistentes
-- **Proteção de rotas** automática
-- **Contexto de sessão** global
-
-### Carrinho de Compras
-- **Contexto React** para estado global
-- **Persistência local** com localStorage
-- **Validação de dados** em tempo real
-- **Cálculos automáticos** de preços
-- **Suporte a variações** e medidas personalizadas
-
-### Responsividade
-- Design mobile-first
-- Breakpoints em 1024px, 768px e 480px
-- Layout adaptativo para tablets e smartphones
-- Formulários otimizados para dispositivos móveis
-
-## Como Executar
-
-1. **Instalar dependências:**
-   ```bash
-   npm install
-   ```
-
-2. **Configurar variáveis de ambiente:**
-   ```bash
-   # .env.local
-   NEXTAUTH_SECRET=sua-chave-secreta-aqui
-   NEXTAUTH_URL=http://localhost:3000
-   ```
-
-3. **Executar em desenvolvimento:**
-   ```bash
-   npm run dev
-   ```
-
-4. **Acessar:**
-   - Home: `http://localhost:3000`
-   - Produto: `http://localhost:3000/produto/1` ou `/produto/2`
-   - Login: `http://localhost:3000/auth/login`
-   - Registro: `http://localhost:3000/auth/register`
-   - Perfil: `http://localhost:3000/perfil`
-
-## Credenciais de Demonstração
-
-### Usuário Normal
-- **Email:** joao@exemplo.com
-- **Senha:** password
-
-### Administrador
-- **Email:** admin@marcenaria.com
-- **Senha:** password
-
-## Funcionalidades dos Formulários
-
-### Login
-- Validação de email e senha
-- Mensagens de erro personalizadas
-- Redirecionamento automático após login
-- Estado de loading durante autenticação
-
-### Registro
-- Validação completa de dados
-- Confirmação de senha
-- Validação de CPF e telefone
-- Termos de uso e política de privacidade
-- Redirecionamento para login após registro
-
-### Recuperação de Senha
-- Validação de email
-- Simulação de envio de email
-- Instruções claras para o usuário
-- Links para outras páginas de autenticação
-
-## Perfil do Usuário
-
-### Abas Disponíveis
-1. **Informações Pessoais** - Dados básicos editáveis
-2. **Meus Pedidos** - Histórico de compras (estrutura preparada)
-3. **Meus Endereços** - Gestão de endereços (estrutura preparada)
-4. **Favoritos** - Produtos favoritados (estrutura preparada)
-5. **Configurações** - Preferências de notificações
-
-### Funcionalidades
-- **Avatar personalizado** com inicial do nome
-- **Formulários responsivos** com validação
-- **Toggles de configuração** para notificações
-- **Estados vazios** com call-to-action
-- **Navegação por abas** intuitiva
-
-## Personalização
+- `POST /api/auth/register` - Registrar usuário
+- `POST /api/auth/login` - Login
+- `GET /api/auth/profile` - Perfil do usuário
+- `PUT /api/auth/profile` - Atualizar perfil
 
 ### Produtos
-- Adicione novos produtos no array `products` em `page.tsx`
-- Inclua imagens na pasta `public/`
-- Configure variações, especificações e avaliações
+- `GET /api/products` - Listar produtos
+- `GET /api/products/:id` - Produto específico
+- `POST /api/products` - Criar produto (admin)
+- `PUT /api/products/:id` - Atualizar produto (admin)
+- `DELETE /api/products/:id` - Excluir produto (admin)
 
-### Autenticação
-- Modifique usuários padrão em `api/auth/[...nextauth]/route.ts`
-- Personalize campos de registro em `auth/register/page.tsx`
-- Ajuste validações e mensagens de erro
+### Categorias
+- `GET /api/categories` - Listar categorias
+- `GET /api/categories/:id` - Categoria específica
+- `POST /api/categories` - Criar categoria (admin)
 
-### Estilos
-- Modifique arquivos CSS para personalizar cores e layout
-- Use variáveis CSS para consistência visual
-- Mantenha a responsividade ao fazer alterações
+## 🎯 Próximos Passos
 
-## Próximos Passos Sugeridos
-
-### **Alta Prioridade (MVP)**
-- [x] ✅ Sistema de usuários e autenticação
-- [x] ✅ Sistema de carrinho de compras
-- [ ] Sistema de pagamento (Mercado Pago/Stripe)
-- [ ] Checkout completo funcional
-- [ ] Gestão básica de estoque
-
-### **Média Prioridade**
+- [ ] Sistema de pedidos completo
+- [ ] Integração com gateway de pagamento
 - [ ] Painel administrativo
-- [ ] Sistema de frete com APIs
-- [ ] Busca e filtros avançados
-- [ ] Sistema de avaliações completo
-- [ ] Integração com banco de dados
+- [ ] Upload de imagens
+- [ ] Sistema de notificações
+- [ ] Relatórios de vendas
+- [ ] SEO otimizado
+- [ ] PWA (Progressive Web App)
 
-### **Baixa Prioridade**
-- [ ] Marketing avançado e cupons
-- [ ] Funcionalidades premium
-- [ ] Internacionalização
-- [ ] Aplicativo móvel
+## 🤝 Contribuição
 
-## Suporte
+1. Fork o projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. Push para a branch (`git push origin feature/AmazingFeature`)
+5. Abra um Pull Request
 
-Para dúvidas ou sugestões, entre em contato através dos canais disponíveis na aplicação.
+## 📄 Licença
 
-## Segurança
+Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
 
-- **Senhas hasheadas** com bcryptjs
-- **Sessões JWT** seguras
-- **Proteção de rotas** para usuários autenticados
-- **Validação de dados** em todos os formulários
-- **HTTPS obrigatório** em produção
+## 👨‍💻 Desenvolvido por
+
+**Antonio Lima Marcenaria**
+- Website: [em breve]
+- Email: contato@antoniolimamarcenaria.com
+- WhatsApp: (11) 99999-9999
+
+---
+
+⭐ Se este projeto te ajudou, considere dar uma estrela!
