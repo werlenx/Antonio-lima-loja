@@ -1,0 +1,340 @@
+/* components/Menu.module.css */
+.header {
+  background: var(--cor-de-fundo);
+  border-bottom: 1px solid #e1e5e9;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.menuButton {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+.menuButton:hover {
+  background: #f8f9fa;
+}
+
+.logo img {
+  height: 40px;
+  width: auto;
+}
+
+/* Seção direita */
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Botão do carrinho */
+.cartButton {
+  position: relative;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.cartButton:hover {
+  background: #f8f9fa;
+  transform: scale(1.1);
+}
+
+.cartBadge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #dc3545;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 10px;
+  min-width: 18px;
+  text-align: center;
+  line-height: 1;
+  animation: bounce 0.3s ease;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+/* Seção do usuário */
+.userSection {
+  position: relative;
+}
+
+.userButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.userButton:hover {
+  background: #f8f9fa;
+}
+
+.userAvatar {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.userName {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
+.userArrow {
+  font-size: 12px;
+  color: #666;
+  transition: transform 0.2s ease;
+}
+
+.userButton:hover .userArrow {
+  transform: rotate(180deg);
+}
+
+/* Dropdown do usuário */
+.userDropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border: 1px solid #e1e5e9;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  min-width: 200px;
+  z-index: 1000;
+  animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdownItem {
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: #1a1a1a;
+  font-size: 14px;
+  transition: background 0.2s ease;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.dropdownItem:hover {
+  background: #f8f9fa;
+}
+
+.dropdownDivider {
+  height: 1px;
+  background: #e1e5e9;
+  margin: 8px 0;
+}
+
+/* Botões de autenticação */
+.authButtons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.loginButton, .registerButton {
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.loginButton {
+  color: #667eea;
+  border: 1px solid #667eea;
+  background: white;
+}
+
+.loginButton:hover {
+  background: #667eea;
+  color: white;
+}
+
+.registerButton {
+  background: #667eea;
+  color: white;
+  border: 1px solid #667eea;
+}
+
+.registerButton:hover {
+  background: #5a67d8;
+  border-color: #5a67d8;
+}
+
+/* Loading do usuário */
+.userLoading {
+  font-size: 14px;
+  color: #666;
+  padding: 8px 12px;
+}
+
+/* Container de busca */
+.searchContainer {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px 16px;
+}
+
+.searchInput {
+  flex: 1;
+  padding: 12px 16px;
+  border: 2px solid #e1e5e9;
+  border-radius: 8px 0 0 8px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.searchButton {
+  padding: 12px 20px;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 0 8px 8px 0;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.searchButton:hover {
+  background: #5a67d8;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .topBar {
+    padding: 12px 16px;
+  }
+  
+  .searchContainer {
+    padding: 0 16px 12px;
+  }
+  
+  .logo img {
+    height: 32px;
+  }
+  
+  .menuButton, .cartButton {
+    font-size: 20px;
+    padding: 6px;
+  }
+  
+  .userName {
+    display: none;
+  }
+  
+  .authButtons {
+    gap: 8px;
+  }
+  
+  .loginButton, .registerButton {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+  
+  .userDropdown {
+    min-width: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .topBar {
+    padding: 10px 12px;
+  }
+  
+  .searchContainer {
+    padding: 0 12px 10px;
+  }
+  
+  .searchInput {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+  
+  .searchButton {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+  
+  .rightSection {
+    gap: 12px;
+  }
+  
+  .userAvatar {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+  
+  .authButtons {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .loginButton, .registerButton {
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+}
+  
